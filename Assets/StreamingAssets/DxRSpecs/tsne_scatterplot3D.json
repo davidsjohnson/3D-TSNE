@@ -1,0 +1,20 @@
+{
+  "data": {
+    "url": "song_data.json"
+  },
+  "mark": "sphere",
+  "encoding": {
+    "x": {
+      "field": "x",
+      "type": "quantitative"
+    },
+    "y": {
+      "field": "y",
+      "type": "quantitative"
+    },
+    "z": {
+      "field": "z",
+      "type": "quantitative"
+    }
+  }
+}
