@@ -6,15 +6,28 @@
   "encoding": {
     "x": {
       "field": "x",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": {
+        "domain": [-600, 600]
+      } 
     },
     "y": {
       "field": "y",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": {
+        "domain": [-600, 600]
+      } 
     },
     "z": {
       "field": "z",
-      "type": "quantitative"
+      "type": "quantitative",
+      "scale": {
+        "domain": [-600, 600]
+      } 
+    },
+    "color": {
+      "field": "genre",
+      "type": "nominal"
     }
   }
 }
