@@ -2,7 +2,7 @@
   "data": {
     "url": "song_data.json"
   },
-  "mark": "sphere",
+  "mark": "oscsphere",
   "encoding": {
     "x": {
       "field": "x",
