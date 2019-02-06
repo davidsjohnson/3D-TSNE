@@ -1,17 +1,14 @@
-﻿namespace VRTK.Examples
+﻿namespace OSCXR
 {
     using UnityEngine;
+    using VRTK;
     using VRTK.Highlighters;
 
-    public class VRTKExample_PointerObjectHighlighterActivator : MonoBehaviour
+    public class OscPointerTriggerActivator : MonoBehaviour
     {
         public VRTK_DestinationMarker pointer;
         public Color hoverColor = Color.cyan;
         public Color selectColor = Color.yellow;
-        public bool logEnterEvent = true;
-        public bool logHoverEvent = false;
-        public bool logExitEvent = true;
-        public bool logSetEvent = true;
 
         protected virtual void OnEnable()
         {
@@ -44,36 +41,39 @@
         protected virtual void DestinationMarkerEnter(object sender, DestinationMarkerEventArgs e)
         {
             ToggleHighlight(e.target, hoverColor);
-            if (logEnterEvent)
+            OscPointerTriggerReactor reactor = e.target.GetComponent<OscPointerTriggerReactor>();
+            if (reactor != null)
             {
-                DebugLogger(VRTK_ControllerReference.GetRealIndex(e.controllerReference), "POINTER ENTER", e.target, e.raycastHit, e.distance, e.destinationPosition);
+                reactor.DestinationMarkerEnter(sender, e);
             }
-            
         }
 
         private void DestinationMarkerHover(object sender, DestinationMarkerEventArgs e)
         {
-            if (logHoverEvent)
+            OscPointerTriggerReactor reactor = e.target.GetComponent<OscPointerTriggerReactor>();
+            if (reactor != null)
             {
-                DebugLogger(VRTK_ControllerReference.GetRealIndex(e.controllerReference), "POINTER HOVER", e.target, e.raycastHit, e.distance, e.destinationPosition);
+                reactor.DestinationMarkerHover(sender, e);
             }
         }
 
         protected virtual void DestinationMarkerExit(object sender, DestinationMarkerEventArgs e)
         {
             ToggleHighlight(e.target, Color.clear);
-            if (logExitEvent)
+            OscPointerTriggerReactor reactor = e.target.GetComponent<OscPointerTriggerReactor>();
+            if (reactor != null)
             {
-                DebugLogger(VRTK_ControllerReference.GetRealIndex(e.controllerReference), "POINTER EXIT", e.target, e.raycastHit, e.distance, e.destinationPosition);
+                reactor.DestinationMarkerExit(sender, e);
             }
         }
 
         protected virtual void DestinationMarkerSet(object sender, DestinationMarkerEventArgs e)
         {
             ToggleHighlight(e.target, selectColor);
-            if (logSetEvent)
+            OscPointerTriggerReactor reactor = e.target.GetComponent<OscPointerTriggerReactor>();
+            if (reactor != null)
             {
-                DebugLogger(VRTK_ControllerReference.GetRealIndex(e.controllerReference), "POINTER SET", e.target, e.raycastHit, e.distance, e.destinationPosition);
+                reactor.DestinationMarkerSet(sender, e);
             }
         }
 
@@ -94,11 +94,11 @@
             }
         }
 
-        protected virtual void DebugLogger(uint index, string action, Transform target, RaycastHit raycastHit, float distance, Vector3 tipPosition)
-        {
-            string targetName = (target ? target.name : "<NO VALID TARGET>");
-            string colliderName = (raycastHit.collider ? raycastHit.collider.name : "<NO VALID COLLIDER>");
-            VRTK_Logger.Info("Controller on index '" + index + "' is " + action + " at a distance of " + distance + " on object named [" + targetName + "] on the collider named [" + colliderName + "] - the pointer tip position is/was: " + tipPosition);
-        }
+        //protected virtual void DebugLogger(uint index, string action, Transform target, RaycastHit raycastHit, float distance, Vector3 tipPosition)
+        //{
+        //    string targetName = (target ? target.name : "<NO VALID TARGET>");
+        //    string colliderName = (raycastHit.collider ? raycastHit.collider.name : "<NO VALID COLLIDER>");
+        //    VRTK_Logger.Info("Controller on index '" + index + "' is " + action + " at a distance of " + distance + " on object named [" + targetName + "] on the collider named [" + colliderName + "] - the pointer tip position is/was: " + tipPosition);
+        //}
     }
 }

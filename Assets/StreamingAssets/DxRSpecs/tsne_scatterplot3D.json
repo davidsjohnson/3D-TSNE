@@ -1,33 +1,42 @@
 {
-  "data": {
-    "url": "song_data.json"
-  },
-  "mark": "oscsphere",
-  "encoding": {
-    "x": {
-      "field": "x",
-      "type": "quantitative",
-      "scale": {
-        "domain": [-600, 600]
-      } 
+    "data": {
+        "url": "song_data.json"
     },
-    "y": {
-      "field": "y",
-      "type": "quantitative",
-      "scale": {
-        "domain": [-600, 600]
-      } 
-    },
-    "z": {
-      "field": "z",
-      "type": "quantitative",
-      "scale": {
-        "domain": [-600, 600]
-      } 
-    },
-    "color": {
-      "field": "genre",
-      "type": "nominal"
+    "mark": "oscsphere",
+    "encoding": {
+        "x": {
+            "field": "x",
+            "type": "quantitative",
+            "scale": {
+                "domain": [
+                    -9.782979965209961,
+                    8.990049362182617
+                ]
+            }
+        },
+        "y": {
+            "field": "y",
+            "type": "quantitative",
+            "scale": {
+                "domain": [
+                    -6.455534934997559,
+                    5.897067070007324
+                ]
+            }
+        },
+        "z": {
+            "field": "z",
+            "type": "quantitative",
+            "scale": {
+                "domain": [
+                    -21.745759963989258,
+                    24.005874633789062
+                ]
+            }
+        },
+        "color": {
+            "field": "genre",
+            "type": "nominal"
+        }
     }
-  }
 }
