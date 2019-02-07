@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 3648407629704827593}
   - component: {fileID: 6837400083981947908}
   - component: {fileID: 4889637093937412480}
-  - component: {fileID: 4889637093937412481}
   - component: {fileID: 1139394609807223000}
-  - component: {fileID: 3363089465840999727}
+  - component: {fileID: 656099375588950445}
   m_Layer: 0
   m_Name: oscsphere
   m_TagString: Untagged
@@ -109,25 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   markName: oscsphere
   forwardDirection: {x: 0, y: 1, z: 0}
---- !u!114 &4889637093937412481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4889637093937412482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bf9bd802f7374c4a807920a525262b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controllerID: 0
-  receiverNames: []
-  oscAddress: 
-  sendContinously: 0
-  leftHandPointer: {fileID: 0}
-  rightHandPointer: {fileID: 0}
-  mark: {fileID: 0}
 --- !u!114 &1139394609807223000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +126,7 @@ MonoBehaviour:
   customOutlineModels: []
   customOutlineModelPaths: []
   enableSubmeshHighlight: 0
---- !u!114 &3363089465840999727
+--- !u!114 &656099375588950445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,13 +135,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4889637093937412482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e49cd08415c3b124896489f023a5f05f, type: 3}
+  m_Script: {fileID: 11500000, guid: b113e33833789c54082acc89036fd7bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oscTrigger: {fileID: 4889637093937412481}
-  hoverColor: {r: 0, g: 1, b: 1, a: 1}
-  selectColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  logEnterEvent: 0
-  logHoverEvent: 0
-  logExitEvent: 0
-  logSetEvent: 0
+  controllerID: 0
+  receiverNames: []
+  oscAddress: 
+  sendContinously: 0
+  leftHandPointer: {fileID: 0}
+  rightHandPointer: {fileID: 0}
+  mark: {fileID: 4889637093937412480}
