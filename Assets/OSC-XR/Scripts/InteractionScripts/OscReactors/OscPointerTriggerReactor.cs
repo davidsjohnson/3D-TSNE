@@ -5,7 +5,7 @@
 
     public class OscPointerTriggerReactor : MonoBehaviour
     {
-        public OscPointerTriggerTransmitter oscTrigger;
+        public OscPointerTriggerTransmitter oscTriggerTest;
         public Color hoverColor = Color.cyan;
         public Color selectColor = Color.yellow;
         public bool logEnterEvent = true;
@@ -16,22 +16,22 @@
 
         public virtual void DestinationMarkerEnter(object sender, DestinationMarkerEventArgs e)
         {
-            oscTrigger.SendOSCMessage(string.Format("{0}/enter", oscTrigger.oscAddress));
+            oscTriggerTest.SendOSCMessage(string.Format("{0}/enter", oscTriggerTest.oscAddress));
         }
 
-        public void DestinationMarkerHover(object sender, DestinationMarkerEventArgs e)
+        public virtual void DestinationMarkerHover(object sender, DestinationMarkerEventArgs e)
         {
             //oscTrigger.SendOSCMessage(string.Format("{0}/hover", oscTrigger.oscAddress), oscTrigger.mark.datum["fpath"]);
         }
 
         public virtual void DestinationMarkerExit(object sender, DestinationMarkerEventArgs e)
         {
-            oscTrigger.SendOSCMessage(string.Format("{0}/exit", oscTrigger.oscAddress));
+            oscTriggerTest.SendOSCMessage(string.Format("{0}/exit", oscTriggerTest.oscAddress));
         }
 
         public virtual void DestinationMarkerSet(object sender, DestinationMarkerEventArgs e)
         {
-            oscTrigger.SendOSCMessage(string.Format("{0}/selected", oscTrigger.oscAddress));
+            oscTriggerTest.SendOSCMessage(string.Format("{0}/selected", oscTriggerTest.oscAddress));
         }
 
         protected virtual void DebugLogger(uint index, string action, Transform target, RaycastHit raycastHit, float distance, Vector3 tipPosition)

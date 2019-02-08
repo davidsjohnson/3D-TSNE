@@ -63,6 +63,8 @@ namespace DxR
         private int frameCount = 0;
         public int FrameCount { get { return frameCount; } set { frameCount = value; } }
 
+        public GameObject rotationAnchor;
+
 
         private void Awake()
         {
@@ -963,7 +965,7 @@ namespace DxR
 
         public void Rescale(float scaleFactor)
         {
-            viewParentObject.transform.localScale = Vector3.Scale(viewParentObject.transform.localScale, 
+            marksParentObject.transform.localScale = Vector3.Scale(viewParentObject.transform.localScale, 
                 new Vector3(scaleFactor, scaleFactor, scaleFactor));
         }
 
@@ -976,10 +978,11 @@ namespace DxR
 
         public void RotateAroundCenter(Vector3 rotationAxis, float angleDegrees)
         {
-            Vector3 center = viewParentObject.transform.parent.transform.position + 
-                new Vector3(width * SIZE_UNIT_SCALE_FACTOR / 2.0f, height * SIZE_UNIT_SCALE_FACTOR / 2.0f, 
-                depth * SIZE_UNIT_SCALE_FACTOR / 2.0f);
-            viewParentObject.transform.RotateAround(center, rotationAxis, angleDegrees);
+            //Vector3 center = viewParentObject.transform.parent.transform.position + 
+            //    new Vector3(width * SIZE_UNIT_SCALE_FACTOR / 2.0f, height * SIZE_UNIT_SCALE_FACTOR / 2.0f, 
+            //    depth * SIZE_UNIT_SCALE_FACTOR / 2.0f);
+
+            marksParentObject.transform.RotateAround(rotationAnchor.transform.position, rotationAxis, angleDegrees);
         }
 
         // Update the visibility of each mark according to the filters results:

@@ -2,39 +2,32 @@
 using VRTK;
 using OSCXR;
 
-public class OscCustomTriggerReactor : MonoBehaviour
+public class OscCustomTriggerReactor : OscPointerTriggerReactor
 {
-    public OscCustomTriggerController oscTrigger;
-    public Color hoverColor = Color.cyan;
-    public Color selectColor = Color.yellow;
-    public bool logEnterEvent = true;
-    public bool logHoverEvent = false;
-    public bool logExitEvent = true;
-    public bool logSetEvent = true;
+    public OscCustomTriggerTransmitter customTrigger;
 
-
-    public virtual void DestinationMarkerEnter(object sender, DestinationMarkerEventArgs e)
+    public override void DestinationMarkerEnter(object sender, DestinationMarkerEventArgs e)
     {
-        Debug.Log(string.Format("Fpath: {0}", oscTrigger.mark.datum["fpath"]));
-        oscTrigger.SendOSCMessage(string.Format("{0}/enter", oscTrigger.oscAddress), oscTrigger.mark.datum["fpath"]);
+        Debug.Log(string.Format("Fpath: {0}", customTrigger.Mark.datum["fpath"]));
+        oscTriggerTest.SendOSCMessage(string.Format("{0}/enter", oscTriggerTest.oscAddress), customTrigger.Mark.datum["fpath"]);
     }
 
-    public  void DestinationMarkerHover(object sender, DestinationMarkerEventArgs e)
+    public override void DestinationMarkerHover(object sender, DestinationMarkerEventArgs e)
     {
         //oscTrigger.SendOSCMessage(string.Format("{0}/hover", oscTrigger.oscAddress), oscTrigger.mark.datum["fpath"]);
     }
 
-    public virtual void DestinationMarkerExit(object sender, DestinationMarkerEventArgs e)
+    public override void DestinationMarkerExit(object sender, DestinationMarkerEventArgs e)
     {
-        oscTrigger.SendOSCMessage(string.Format("{0}/exit", oscTrigger.oscAddress), oscTrigger.mark.datum["fpath"]);
+        oscTriggerTest.SendOSCMessage(string.Format("{0}/exit", oscTriggerTest.oscAddress), customTrigger.Mark.datum["fpath"]);
     }
 
-    public virtual void DestinationMarkerSet(object sender, DestinationMarkerEventArgs e)
+    public override void DestinationMarkerSet(object sender, DestinationMarkerEventArgs e)
     {
-        oscTrigger.SendOSCMessage(string.Format("{0}/selected", oscTrigger.oscAddress), oscTrigger.mark.datum["fpath"]);
+        oscTriggerTest.SendOSCMessage(string.Format("{0}/selected", oscTriggerTest.oscAddress), customTrigger.Mark.datum["fpath"]);
     }
 
-    protected virtual void DebugLogger(uint index, string action, Transform target, RaycastHit raycastHit, float distance, Vector3 tipPosition)
+    protected override void DebugLogger(uint index, string action, Transform target, RaycastHit raycastHit, float distance, Vector3 tipPosition)
     {
         string targetName = (target ? target.name : "<NO VALID TARGET>");
         string colliderName = (raycastHit.collider ? raycastHit.collider.name : "<NO VALID COLLIDER>");
